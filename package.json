@@ -1,0 +1,27 @@
+{
+  "name": "boarder",
+  "version": "0.1.2",
+  "description": "Quickly create webpack-based projects",
+  "preferGlobal": true,
+  "main": "index.js",
+  "bin": {
+    "boarder": "bin/keeper",
+    "boarder-init": "bin/keeper-init"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "webpack",
+    "cli"
+  ],
+  "author": "shaodahong",
+  "license": "MIT",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "dependencies": {
+    "commander": "^2.9.0",
+    "inquirer": "^3.1.0"
+  }
+}

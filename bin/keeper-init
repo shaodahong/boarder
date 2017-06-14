@@ -1,0 +1,44 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+var exists = require('fs').existsSync;
+var path = require('path')
+var inquirer = require('inquirer')
+
+program
+  .usage('<template-name> [project-name]')
+
+
+function help () {
+  program.parse(process.argv)
+  if (program.args.length < 1) return program.help()
+}
+help()
+
+var rawName = program.args[1]
+var inPlace = !rawName || rawName === '.'
+var to = path.resolve(rawName || '.')
+
+if (exists(to)) {
+	console.log(0, rawName, to, exists(to))
+  inquirer.prompt([{
+    type: 'confirm',
+    message: inPlace
+      ? 'Generate project in current directory?'
+      : 'Target directory exists. Continue?',
+    name: 'ok'
+  }], function (answers) {
+    console.log('answers', answers)
+    if (answers.ok) {
+      run()
+    }
+  })
+} else {
+	console.log(1, rawName, to, exists(to))
+  run()
+}
+
+
+function run() {
+	console.log('run')
+}
