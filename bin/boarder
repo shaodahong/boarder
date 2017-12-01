@@ -1,20 +1,37 @@
 #!/usr/bin/env node
+
 const inquirer = require('inquirer');
+const chalk = require('chalk');
+
+const baseConfig = {
+  projectName: 'webpack-demo'
+};
 
 const argv = require('yargs')
-  .usage('Usage: $0 init [Project Name]')
+  .alias('h', 'help')
+  .alias('-v', '--version')
+  .alias('-V', '--version')
+  .usage('Usage: $0 init')
   .command(
     'init',
-    'init base on webpack demo',
+    chalk.underline('init base on webpack demo'),
     yargs => {
 
     },
     argv => {
-      const projectName = argv._[1];
+      create()
     }
   )
-  .example('$0 init webpack-demo')
-  .help('h')
-  .alias('h', 'help')
-  .alias('-v', '--version')
+  .example('$0 init')
+  .demandCommand(1, chalk.magenta('You need init command before moving on'))
   .argv;
+
+async function init() {
+  const config = {}
+  return config
+}
+
+async function create() {
+  const config = await init();
+  console.log('create', config)
+}
