@@ -1,6 +1,20 @@
 #!/usr/bin/env node
-require('commander')
-  .version(require('../package').version)
-  .usage('<command> [options]')
-  .command('init', 'generate a new project from a template')
-  .parse(process.argv)
+const inquirer = require('inquirer');
+
+const argv = require('yargs')
+  .usage('Usage: $0 init [Project Name]')
+  .command(
+    'init',
+    'init base on webpack demo',
+    yargs => {
+
+    },
+    argv => {
+      const projectName = argv._[1];
+    }
+  )
+  .example('$0 init webpack-demo')
+  .help('h')
+  .alias('h', 'help')
+  .alias('-v', '--version')
+  .argv;
