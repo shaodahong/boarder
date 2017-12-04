@@ -51,7 +51,7 @@ async function create(config) {
   }).stdout.replace(/\n/g, '');
   shelljs.rm('-rf', config.projectName);
   shelljs.mkdir('-p', config.projectName)
-  shelljs.cp('-r', [npmAddr + '/lib/node_modules/boarder/template/*'], config.projectName)
+  shelljs.cp('-r', [`${npmAddr}/lib/node_modules/boarder/template/*`], config.projectName)
 
   spinner.text = 'Loading install dependencies';
 
