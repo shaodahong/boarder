@@ -43,6 +43,9 @@ async function init() {
 
 async function create(config) {
   console.log('create', config)
+  const npmAddr = shelljs.exec('npm config get prefix', {
+    silent: true
+  }).stdout.replace(/\n/g, '');
   shelljs.mkdir('-p', config.projectName)
-  shelljs.cp('-r', ['template/*'], config.projectName)
+  shelljs.cp('-r', [npmAddr + '/lib/node_modules/boarder/template/*'], config.projectName)
 }
