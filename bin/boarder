@@ -2,6 +2,7 @@
 
 const inquirer = require('inquirer');
 const chalk = require('chalk');
+const shelljs = require('shelljs');
 
 const baseConfig = {
   projectName: 'webpack-demo'
@@ -19,7 +20,7 @@ const argv = require('yargs')
 
     },
     argv => {
-      create()
+      init()
     }
   )
   .example('$0 init')
@@ -27,11 +28,21 @@ const argv = require('yargs')
   .argv;
 
 async function init() {
-  const config = {}
-  return config
+  const config = {};
+  inquirer.prompt([{
+    type: 'input',
+    name: 'projectName',
+    default: 'webpack-demo',
+    message: 'project name?',
+  }]).then(answers => {
+    Object.assign(baseConfig, answers)
+    create(baseConfig)
+  });
+
 }
 
-async function create() {
-  const config = await init();
+async function create(config) {
   console.log('create', config)
+  shelljs.mkdir('-p', config.projectName)
+  shelljs.cp('-r', ['template/*'], config.projectName)
 }
