@@ -5,8 +5,7 @@
   "preferGlobal": true,
   "main": "index.js",
   "bin": {
-    "boarder": "bin/boarder",
-    "boarder-init": "bin/boarder-init"
+    "boarder": "bin/boarder"
   },
   "repository": {
     "type": "git",
