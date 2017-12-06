@@ -52,7 +52,6 @@ async function create(config) {
   const npmAddr = shelljs.exec('npm config get prefix', {
     silent: true
   }).stdout.replace(/\n/g, '');
-  // shelljs.rm('-rf', config.projectName);
   shelljs.mkdir('-p', config.projectName)
   shelljs.cp('-r', [winSystem ?  `${npmAddr}/node_modules/boarder/template/*` : `${npmAddr}/lib/node_modules/boarder/template/*`], config.projectName)
 
